@@ -15,13 +15,13 @@ def quitwin():
 def query_grades(username, password, xnm, xqm):
     browser = webdriver.Edge()
     browser.delete_all_cookies()
-    browser.get('http://i.swu.edu.cn/portal_main/toPortalPage')
+    browser.get('校内门户登录页')
     time.sleep(1)
-    if browser.title != '西南大学一站式服务门户':
+    if browser.title != '校内门户名称':
         browser.refresh()
         print('执行页面刷新')
         time.sleep(2)
-    if browser.title != '西南大学一站式服务门户':
+    if browser.title != '校内门户名称':
         browser.quit()
         print('无法连接到登陆页面')
         return
@@ -34,7 +34,7 @@ def query_grades(username, password, xnm, xqm):
     # print(browser.get_cookies())
     browser.switch_to_window(browser.window_handles[-1])
     sleeptimes = 0
-    while browser.title != '我的应用':
+    while browser.title != '校内门户应用名称':
         time.sleep(1)
         sleeptimes += 1
         if sleeptimes == 3:
@@ -59,7 +59,7 @@ def query_grades(username, password, xnm, xqm):
         '2': 12,
         '3': '',
     }
-    url = 'http://jw.swu.edu.cn/jwglxt/cjcx/cjcx_cxDgXscj.html?doType=query&gnmkdm=N305005'
+    url = '查分网址'
     cookie = {
         '1': onevalue,
         'JSESSIONID': jessionid,
@@ -70,7 +70,7 @@ def query_grades(username, password, xnm, xqm):
         'xqm': xqdict[str(xqm)],# 上半学期3，下半学期12
     }
     header = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36'
+        # '伪装头信息'
     }
 
     req = requests.post(url=url, headers=header, data=data, cookies=cookie).json()
