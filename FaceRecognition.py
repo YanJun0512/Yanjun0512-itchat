@@ -4,9 +4,9 @@ import requests
 
 def Face(fileDir):
     ans = '识别成功'
-    url = 'https://api-cn.faceplusplus.com/facepp/v3/detect'
-    api_key = '_9csMwQoZr11gzJXQ4n4dFuHdKJsGRe-'
-    api_secret = 'TIgjx4l8pSh-BjhPYduST_SMF-Xe68lh'
+    url = 'face++api地址'
+    api_key = '你的api_key'
+    api_secret = '你的api_secret'
 
     data = {
         'api_key': api_key,
